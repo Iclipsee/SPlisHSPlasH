@@ -1,0 +1,105 @@
+{
+    "Configuration": {
+        "boundaryHandlingMethod": 2,
+        "cflFactor": 1.0,
+        "cflMaxTimeStepSize": 0.004999999888241291,
+        "cflMethod": 1,
+        "cflMinTimeStepSize": 9.999999747378752e-05,
+        "dataExportFPS": 25.0,
+        "density0": 1000,
+        "enableAsyncExport": true,
+        "enableDivergenceSolver": true,
+        "enablePartioExport": true,
+        "enableRigidBodyExport": true,
+        "enableRigidBodyOBJExport": false,
+        "enableRigidBodyPLYExport": false,
+        "enableRigidBodyVTKExport": false,
+        "enableStateExport": true,
+        "enableVTKExport": false,
+        "enableZSort": true,
+        "exponent": 7,
+        "gradKernel": 4,
+        "gravitation": [
+            0.0,
+            -9.8100004196167,
+            0.0
+        ],
+        "kernel": 4,
+        "maxError": 0.05000000074505806,
+        "maxErrorV": 0.10000000149011612,
+        "maxIterations": 100,
+        "maxIterationsV": 100,
+        "minIterations": 2,
+        "numberOfStepsPerRenderUpdate": 4,
+        "particleAttributes": "density;velocity",
+        "particleRadius": 0.025,
+        "pause": true,
+        "pauseAt": -1.0,
+        "renderWalls": 3,
+        "simulationMethod": 4,
+        "stateExportFPS": 1.0,
+        "stiffness": 50000,
+        "stopAt": -1.0,
+        "timeStepSize": 0.004999999888241291,
+        "velocityUpdateMethod": 0
+    },
+    "FluidBlocks": [
+        {
+            "denseMode": 0,
+            "end": [
+                0.5,
+                2,
+                0.5
+            ],
+            "scale": [
+                1,
+                1,
+                1
+            ],
+            "start": [
+                -0.5,
+                1,
+                -0.5
+            ],
+            "translation": [
+                0,
+                0.05,
+                0.0
+            ]
+        }
+    ],
+    "Materials": [
+        {
+            "colorField": "velocity",
+            "colorMapType": 1,
+            "dragMethod": 0,
+            "elasticityMethod": 0,
+            "id": "Fluid",
+            "renderMaxValue": 10.0,
+            "renderMinValue": 0.0,
+            "surfaceTension": 0.2,
+            "surfaceTensionMethod": 0,
+            "viscosity": 0.009999999776482582,
+            "viscosityBoundary": 0.0,
+            "viscosityMethod": 1,
+            "vorticityMethod": 0,
+            "xsph": 0.0,
+            "xsphBoundary": 0.0
+        }
+    ],
+    "RigidBodies": [
+      {
+        "geometryFile": "../models/lavalamp.obj",
+        "translation": [ 0, -4, 0 ],
+        "rotationAxis": [ 0, 0, 0 ],
+        "rotationAngle": 0,
+        "scale": [ 0.8, 0.8, 0.8 ],
+        "color": [ 0.1, 0.4, 0.6, 1.0 ],
+        "isDynamic": false,
+        "isWall": true,
+        "mapInvert": true,
+        "mapThickness": 0.0,
+        "mapResolution": [ 20, 20, 20 ]
+      }
+    ]
+}

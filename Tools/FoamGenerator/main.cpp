@@ -4,7 +4,7 @@
 #include "Utilities/Timing.h"
 #include "Utilities/FileSystem.h"
 #include "extern/cxxopts/cxxopts.hpp"
-#include "CompactNSearch.h"
+#include "cuNSearch.h"
 #include "Utilities/StringTools.h"
 #include "SPlisHSPlasH/SPHKernels.h"
 #include "FoamKernel.h"
@@ -87,7 +87,7 @@ Vector3r bbMin(Vector3r::Constant(-std::numeric_limits<Real>::max()));
 Vector3r bbMax(Vector3r::Constant(std::numeric_limits<Real>::max()));
 enum class BbType { Kill, Lifesteal, Clamp };
 BbType bbType = BbType::Lifesteal;
-CompactNSearch::NeighborhoodSearch *neighborhoodSearch;
+cuNSearch::NeighborhoodSearch *neighborhoodSearch;
 std::vector<Vector3r> x0, v0, normals;
 std::vector<Real> densities;
 std::vector<Vector3r> fx, fv;
@@ -479,7 +479,7 @@ void queryValues(Real &vDiffAvgMax, Real & omegaDiffAvgMax, Real &curvatureAvgMa
 		START_TIMING("iteration");
 		if (neighborhoodSearch == nullptr)
 		{
-			neighborhoodSearch = new CompactNSearch::NeighborhoodSearch(supportRadius, false);
+			neighborhoodSearch = new cuNSearch::NeighborhoodSearch(supportRadius);
 			neighborhoodSearch->set_radius(supportRadius);
 			// Fluids 
 			neighborhoodSearch->add_point_set(&x0[0][0], x0.size(), true, true);
@@ -731,7 +731,7 @@ void generateFoamFiles()
 		// init neighborhood search
 		if (neighborhoodSearch == NULL)
 		{
-			neighborhoodSearch = new CompactNSearch::NeighborhoodSearch(supportRadius, false);
+			neighborhoodSearch = new cuNSearch::NeighborhoodSearch(supportRadius);
 			neighborhoodSearch->set_radius(supportRadius);
 			// Fluid 
 			neighborhoodSearch->add_point_set(&x0[0][0], x0.size(), true, true);

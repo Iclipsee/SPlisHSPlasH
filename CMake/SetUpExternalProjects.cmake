@@ -17,6 +17,7 @@ ExternalProject_Add(
 	GIT_TAG "0b69062ff9c56fbb6dcecd296652028bedbacf0e"
 	INSTALL_DIR ${ExternalInstallDir}/Discregrid
 	CMAKE_ARGS -DCMAKE_BUILD_TYPE:STRING=${EXT_CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX:PATH=${ExternalInstallDir}/Discregrid -DBUILD_CMD_EXECUTABLE:BOOL=0 -DEIGEN3_INCLUDE_DIR:PATH=${EIGEN3_INCLUDE_DIR} -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}
+	BUILD_BYPRODUCTS ${ExternalInstallDir}/Discregrid/lib/Discregrid_d.lib
 )
 ExternalProject_Get_Property(Ext_Discregrid INSTALL_DIR)
 set(DISCREGRID_INCLUDE_DIR ${INSTALL_DIR}/include)
@@ -60,6 +61,9 @@ ExternalProject_Add(
 	-DDiscregrid_DEBUG_LIB:FILEPATH=${DISCREGRID_DEBUG_LIB}
 	-DDiscregrid_LIB:FILEPATH=${DISCREGRID_LIB}
 	-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}
+	BUILD_BYPRODUCTS ${ExternalInstallDir}/PositionBasedDynamics/lib/PositionBasedDynamics_d.lib
+	BUILD_BYPRODUCTS ${ExternalInstallDir}/PositionBasedDynamics/lib/Simulation_d.lib
+	BUILD_BYPRODUCTS ${ExternalInstallDir}/PositionBasedDynamics/lib/Utils_d.lib
 )
 ExternalProject_Get_Property(Ext_PBD INSTALL_DIR)
 set(PBD_INCLUDE_DIR ${INSTALL_DIR}/include)

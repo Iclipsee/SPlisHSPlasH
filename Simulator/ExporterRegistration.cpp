@@ -1,5 +1,6 @@
 #include "SimulatorBase.h"
 #include "Exporter/ExporterBase.h"
+#include "Exporter/ParticleExporter_Lavalamp.h"
 #include "Exporter/ParticleExporter_Partio.h"
 #include "Exporter/ParticleExporter_VTK.h"
 #include "Exporter/RigidBodyExporter_BIN.h"
@@ -11,6 +12,7 @@ using namespace SPH;
 
 void SimulatorBase::createExporters()
 {
+	addParticleExporter("enableLavalampExport", "Lavalamp Exporter", "Enable/disable lavalamp export.", new ParticleExporter_Lavalamp(this));
 	addParticleExporter("enablePartioExport", "Partio Exporter", "Enable/disable partio export.", new ParticleExporter_Partio(this));
 	addParticleExporter("enableVTKExport", "VTK Exporter", "Enable/disable VTK export.", new ParticleExporter_VTK(this));
 
